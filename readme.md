@@ -1,3 +1,9 @@
+> **This fork** (branch `glohd`, the default) is upstream v1.0.8 patched for a
+> **Kobo Glo HD**: reliable Wi-Fi after sleep, no error screen or black flash
+> on updates, one rotation for every screen, and a per-cycle log. Setup,
+> install script and docs are in [`glohd/README.md`](glohd/README.md). The rest
+> of this readme is upstream's, unchanged.
+
 # Turn Your Kobo into a TRMNL client
 This repository contains the implementation and a guide to make your kobo acts as a TRMNL client on demand.
 
