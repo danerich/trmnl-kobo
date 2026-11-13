@@ -106,8 +106,9 @@ would only wake on a button press.
 **Log.** One line per cycle goes to `.adds/TRMNL/cycles.log` on the Kobo. See
 [Checking Wi-Fi health](#checking-wi-fi-health).
 
-Battery: the device suspends between refreshes, so it runs for weeks on a
-charge. The KOReader plugin (`usetrmnl/trmnl-koreader`) handles rotation more
+Battery: the device suspends between refreshes. Measured on the Glo HD at a
+15-minute refresh with sleep mode 20:00–05:00, it used about 10% a day, so
+roughly 9–10 days per charge. The KOReader plugin (`usetrmnl/trmnl-koreader`) handles rotation more
 cleanly, but it keeps the device awake, so only use it on USB power.
 
 ## config.json
@@ -181,13 +182,15 @@ USB to read it.
   to accept the Kobo, not the client.
 - **`rssi`.** Below about -75 dBm is weak signal. Move the Kobo or the access
   point.
-- **`freq`.** `24xx` is 2.4 GHz, the only band the Glo HD supports. Mesh
+- **`freq`.** `24xx` is 2.4 GHz, the only band the Glo HD supports. The Glo
+  HD's driver reports `freq=0`, so on this device the field tells you nothing. Mesh
   systems or band-steering routers that hide or drop 2.4 GHz clients cause
   "not associated" failures. A separate 2.4 GHz network name fixes that.
 - **`radio_tries=2`.** The first attempt failed and switching the radio off
   and on helped. Occasional is fine; every cycle points at the router.
 - **`reason=display request: ...` with Wi-Fi up.** Points at DNS or the TRMNL
-  server, not the radio.
+  server, not the radio. An occasional `Resolving timed out` just after
+  waking is normal here: the next retry a minute later succeeds.
 - **`draw=`.** `flash`, `quiet` or `unchanged` (same image as on screen, not redrawn).
 - **`recovered_after=N`.** The first success after N failed cycles.
 - **`rtcwake returned after Ns, fallback suspend`.** The normal suspend isn't
